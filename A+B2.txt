@@ -1,0 +1,57 @@
+输入
+输入的第一行包含整数T（1 <= T <= 20），表示测试用例的数量。然后是T行，每行包含两个正整数A和B.请注意，整数非常大，这意味着您不应该使用32位整数来处理它们。您可以假设每个整数的长度不超过1000。
+产量
+对于每个测试用例，您应输出两行。第一行是“Case＃：”，＃表示测试用例的编号。第二行是方程“A + B = Sum”，Sum表示A + B的结果。注意方程中有一些空格。在两个测试用例之间输出一个空行。
+样本输入
+2
+1 2
+112233445566778899 998877665544332211
+ 
+
+样本输出
+情况1：
+1 + 2 = 3
+
+案例2：
+112233445566778899 + 998877665544332211 = 1111111111111111110
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main() {
+	  char a[1000] = {"\0"}, b[1000] = {"\0"}, c[1000];
+	int min, max, len1, len2,T,i,j,k=1;
+  	scanf("%d", &T);
+	while (T>=1&&T<=20)
+	{
+		len1 = len2 = 0;
+		scanf("%s%s",a,b);
+		len1 = strlen(a);
+		len2 = strlen(b);
+		min = len1 < len2 ? len1 : len2;
+		max = len1 > len2 ? len1 : len2;
+		strcpy(c, len1 > len2 ? a : b);
+		for (i = min - 1, j = max - 1; i >= 0; i--, j--)
+		{
+			if (len1 <= len2)
+				c[j] = a[i] + b[j]-'0';
+			if (len1 > len2)
+				c[j] = a[j] + b[i]-'0';
+		}
+		for (i = strlen(c); i >= 0; i--)
+			if (c[i]-'0'> 9)
+			{
+				c[i] = c[i] - 10;
+				c[i - 1] = c[i - 1] + 1;
+			}
+		printf("Case %d:\n", k++);
+		printf("%s + %s = ", a, b);
+		for (i = 0; i < strlen(c); i++)
+			printf("%d", c[i]-'0');
+		printf("\n");
+		T--;
+		if (T > 0)
+			printf("\n");
+	}
+	system("pause");
+}
