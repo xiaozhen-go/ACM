@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<string.h>
+typedef struct {
+	char color[100];
+	int num;
+}eachboll;
+typedef struct {
+     eachboll boll[1000];
+}allboll;
+int main() {
+	int n,i,j,t,m,p;
+	allboll allboll;
+		while (scanf("%d", &n)!=EOF&& (n != 0))
+	{
+		for (i = 0; i <n; i++)
+		{
+			scanf("%s", allboll.boll[i].color);
+		}
+		for (j = 0; j < n; j++)
+		{
+			allboll.boll[j].num =0;
+			for (p = 0; p < j; p++)
+			{
+				if (strcmp(allboll.boll[p].color, allboll.boll[j].color) == 0)
+					allboll.boll[j].num++;
+			}
+		}
+		i = 0; m = 0;
+		t = allboll.boll[i].num;
+		while(i<n)
+		{
+			if (t >=allboll.boll[i + 1].num)
+				i++;
+			else
+			{
+				t = allboll.boll[i+1].num;
+				i++;
+				m=i;
+			}
+		}
+		printf("%s\n", allboll.boll[m].color);
+	 }
+		return 0;
+}
