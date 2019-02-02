@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main() {
+	double e=2.5,s;
+	int i,j;
+	printf("n e\n");
+	printf("- -----------\n");
+	printf("0 1\n");
+	printf("1 2\n");
+	printf("2 2.5\n");
+	s = 2;
+	for (j = 3; j <= 9; j++)
+	{
+			s = s * j;
+			e = e + 1 / s;
+		printf("%d %.9lf\n", j,e);
+	}
+	system("pause");
+	return 0;
+}
