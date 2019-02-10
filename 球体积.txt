@@ -1,0 +1,11 @@
+#include<stdio.h>
+#include<math.h>
+#define pi 3.1415927
+int main() {
+	double R, V;
+	while (scanf("%lf", &R) != EOF)
+	{
+		V = (4 * pi*R*R*R) / 3;
+		printf("%.3lf\n", V);
+	}
+}
